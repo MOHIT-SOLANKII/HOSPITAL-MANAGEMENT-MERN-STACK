@@ -16,12 +16,14 @@ const messageSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    regex: [
-      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-      "Please enter a valid email address",
-      
-    ],
     unique: true,
+    validate: {
+      validator: function (v) {
+        const regex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(v);
+      },
+      message: (props) => `${props.value} is not a valid email address!`,
+    },
   },
   phone: {
     type: String /*Number is not taken because minLength and maxLength validations only comes with String type*/,
