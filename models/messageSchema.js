@@ -22,7 +22,7 @@ const messageSchema = new mongoose.Schema({
         const regex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(v);
       },
-      message: (props) => `${props.value} is not a valid email address!`,
+      message: "Please provide valid email address.",
     },
   },
   phone: {
