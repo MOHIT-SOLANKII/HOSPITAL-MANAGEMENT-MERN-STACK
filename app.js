@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { dbConnection } from "./database/dbConnection.js";
 import messageRouter from "./router/messageRouter.js";
+import userRouter from "./router/userRouter.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 
 /* Giving functionalities of express to the app variable */
@@ -38,6 +39,7 @@ app.use(
 );
 
 app.use("/api/v1/message", messageRouter);
+app.use("/api/v1/user", userRouter);
 
 /* Connecting to the database */
 dbConnection();
