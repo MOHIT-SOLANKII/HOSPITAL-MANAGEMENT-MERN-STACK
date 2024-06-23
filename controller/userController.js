@@ -91,7 +91,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
     message: "User Logged In successfully.",
   });*/
 
-  generateToken(user, "User logged in successfully.", 200, res);
+  generateToken(user, `${user.role} logged in successfully .`, 200, res);
 });
 
 // ** Adding new admin functionality
