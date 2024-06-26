@@ -8,6 +8,13 @@ body {
     font-family: 'Poppins', sans-serif;
     
   }
+
+// .bgImage{
+//     background-image: url({props => props.image});
+//     background-size: cover;
+//     background-position: center;
+  
+// }  
 `;
 
 export default GlobalStyle;

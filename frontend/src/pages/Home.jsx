@@ -6,10 +6,13 @@ import Departments from "../components/Departments";
 import MessageForm from "../components/MessageForm";
 import Navbar from "../components/Navbar";
 
+
 const Home = () => {
   return (
     <>
-      <Navbar/>
+      <Navbar />
+      <Departments />
+      
       {/* <Hero />
        <Biography />
       <Departments />
