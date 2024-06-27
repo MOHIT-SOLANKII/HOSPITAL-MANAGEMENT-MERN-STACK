@@ -30,6 +30,10 @@ const App = () => {
     document.querySelector("html").classList.add(themeMode);
   }, [themeMode]);
 
+  useEffect(() => {
+    document.body.className = themeMode === 'light' ? '' : 'bg-[#0C0C0C]';
+  }, [themeMode]);
+
   return (
     <>
       <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>

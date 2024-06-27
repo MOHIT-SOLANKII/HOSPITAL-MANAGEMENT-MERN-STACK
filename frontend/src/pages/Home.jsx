@@ -5,13 +5,17 @@ import Biography from "../components/Biography";
 import Departments from "../components/Departments";
 import MessageForm from "../components/MessageForm";
 import Navbar from "../components/Navbar";
+import InfiniteScroll from "../components/InfiniteScroll";
+import DoctorsList from "../components/DoctorsList";
 
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <Departments />
+      {/* <MessageForm /> */}
+      <DoctorsList />
+      {/* <Departments /> */}
       
       {/* <Hero />
        <Biography />

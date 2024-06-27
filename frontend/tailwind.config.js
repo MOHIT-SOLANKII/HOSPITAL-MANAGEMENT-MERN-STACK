@@ -5,12 +5,12 @@ export default {
   theme: {
     extend: {
       screens: {
-        sm: "600px",
+        sm: "550px",
         md: "1024px",
         lg: "1500px",
         xl: "3000px",
-        
       },
+     
     },
   },
   plugins: [],

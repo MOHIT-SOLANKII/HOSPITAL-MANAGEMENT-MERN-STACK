@@ -38,8 +38,8 @@ const Departments = () => {
               alt={department.name}
               className="absolute top-0 left-0 h-full w-full z-10 rounded-2xl "
             />
-            <div className="z-20 bg-white w-[80%] h-[20%] rounded-3xl flex justify-center items-center absolute bottom-8">
-              <div className="text-2xl font-semibold uppercase">
+            <div className="z-20 bg-white dark:bg-slate-900 w-[80%] h-[20%] rounded-3xl flex justify-center items-center absolute bottom-8">
+              <div className="text-2xl font-semibold uppercase dark:text-[#FFCE00] opacity-80">
                 {department.name}
               </div>
             </div>

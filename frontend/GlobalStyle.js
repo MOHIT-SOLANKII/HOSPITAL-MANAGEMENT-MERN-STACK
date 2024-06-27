@@ -6,15 +6,10 @@ const GlobalStyle = createGlobalStyle`
 
 body {
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
     
   }
 
-// .bgImage{
-//     background-image: url({props => props.image});
-//     background-size: cover;
-//     background-position: center;
-  
-// }  
 `;
 
 export default GlobalStyle;
