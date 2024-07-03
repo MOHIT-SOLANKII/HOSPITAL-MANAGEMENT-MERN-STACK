@@ -1,54 +1,53 @@
-/* eslint-disable no-unused-vars */
-import {React,useState,useEffect} from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Appointment from "./pages/Appointment";
-import AboutUs from "./pages/AboutUs";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import { useContext, useEffect } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Appointment from "./Pages/Appointment";
+import AboutUs from "./Pages/AboutUs";
+import Register from "./Pages/Register";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import GlobalStyle from "../GlobalStyle.js";
-import { ThemeProvider } from "./contexts/theme.js";
-import ThemeBtn from "./components/ThemeBtn.jsx";
-
+import axios from "axios";
+import { Context } from "./main";
+import Login from "./Pages/Login";
 const App = () => {
-  const [themeMode, setThemeMode] = useState("light");
-
-  const lightTheme = () => {
-    setThemeMode("light");
-  };
-
-  const darkTheme = () => {
-    setThemeMode("dark");
-  };
-
-  // actual change in theme
+  const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
 
   useEffect(() => {
-    document.querySelector("html").classList.remove("light", "dark");
-    document.querySelector("html").classList.add(themeMode);
-  }, [themeMode]);
-
-  useEffect(() => {
-    document.body.className = themeMode === 'light' ? '' : 'bg-[#0C0C0C]';
-  }, [themeMode]);
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/v1/user/patient/me",
+          {
+            withCredentials: true,
+          }
+        );
+        setIsAuthenticated(true);
+        setUser(response.data.user);
+      } catch (error) {
+        setIsAuthenticated(false);
+        setUser({});
+      }
+    };
+    fetchUser();
+  }, [isAuthenticated]);
 
   return (
     <>
-      <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-        <GlobalStyle />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/appointment" element={<Appointment />}></Route>
-            <Route path="/about" element={<AboutUs />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-          </Routes>
-          <ToastContainer position="top-center" />
-        </Router>
-      </ThemeProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Footer />
+        <ToastContainer position="top-center" />
+      </Router>
     </>
   );
 };

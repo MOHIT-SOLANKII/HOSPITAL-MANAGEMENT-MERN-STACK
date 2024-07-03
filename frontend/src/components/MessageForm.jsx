@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -10,63 +9,75 @@ const MessageForm = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleMessage = async (e) => {};
+  const handleMessage = async (e) => {
+    e.preventDefault();
+    try {
+      await axios
+        .post(
+          "http://localhost:4000/api/v1/message/send",
+          { firstName, lastName, email, phone, message },
+          {
+            withCredentials: true,
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((res) => {
+          toast.success(res.data.message);
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+        });
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <>
-      <div className="mx-[7%] border-2 border-gray-200 h-auto rounded-lg shadow-sm shadow-orange-200 flex-row dark:bg-[#222831]">
-        <h1 className="text-center text-3xl font-bold mt-6 mb-10 dark:text-[#FFCE00] ">
-          Send Us A Message
-        </h1>
-        
-        <div className="">
-          <form
-            onSubmit={handleMessage}
-            className="flex flex-col space-y-10 items-center
-          "
-          >
+      <div className="container form-component message-form">
+        <h2>Send Us A Message</h2>
+        <form onSubmit={handleMessage}>
+          <div>
             <input
               type="text"
               placeholder="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-3/4 h-14 px-2 rounded-lg border-2 border-gray-200 shadow-sm shadow-green-200 hover:border-green-300"
             />
             <input
               type="text"
               placeholder="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="w-3/4 h-14 px-2 rounded-lg border-2 border-gray-200 shadow-sm shadow-green-200 hover:border-green-300"
             />
+          </div>
+          <div>
             <input
               type="text"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-3/4 h-14 px-2 rounded-lg border-2 border-gray-200 shadow-sm shadow-green-200 hover:border-green-300"
             />
             <input
               type="number"
               placeholder="Mobile Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-3/4 h-14 px-2 rounded-lg border-2 border-gray-200 shadow-sm shadow-green-200 hover:border-green-300"
             />
-            <textarea
-              rows={7}
-              placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-3/4 px-2 py-2 rounded-lg border-2 border-gray-200 shadow-sm shadow-green-200 hover:border-green-300"
-            />
-            `
-            <button type="submit" className="border-1 border-">
-              Send
-            </button>
-            `
-          </form>
-        </div>
+          </div>
+          <textarea
+            rows={7}
+            placeholder="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <div style={{ justifyContent: "center", alignItems: "center" }}>
+            <button type="submit">Send</button>
+          </div>
+        </form>
+        <img src="/Vector.png" alt="vector" />
       </div>
     </>
   );

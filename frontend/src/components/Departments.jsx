@@ -1,51 +1,93 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { departments } from "./../utils/DoctorDepartment";
 
 const Departments = () => {
+  const departmentsArray = [
+    {
+      name: "Pediatrics",
+      imageUrl: "/departments/pediaN.jpg",
+    },
+    {
+      name: "Orthopedics",
+      imageUrl: "/departments/ortho.jpg",
+    },
+    {
+      name: "Cardiology",
+      imageUrl: "/departments/cardio.jpg",
+    },
+    {
+      name: "Neurology",
+      imageUrl: "/departments/neuro.jpg",
+    },
+    {
+      name: "Oncology",
+      imageUrl: "/departments/onco.jpg",
+    },
+    {
+      name: "Radiology",
+      imageUrl: "/departments/radio.jpg",
+    },
+    {
+      name: "Physical Therapy",
+      imageUrl: "/departments/therapy.jpg",
+    },
+    {
+      name: "Dermatology",
+      imageUrl: "/departments/derma.jpg",
+    },
+    {
+      name: "ENT",
+      imageUrl: "/departments/ent.jpg",
+    },
+  ];
+
   const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 3000, min: 1500 },
+    extraLarge: {
+      breakpoint: { max: 3000, min: 1324 },
       items: 4,
+      slidesToSlide: 1, // optional, default to 1.
     },
-    desktop: {
-      breakpoint: { max: 1500, min: 1024 },
+    large: {
+      breakpoint: { max: 1324, min: 1005 },
       items: 3,
+      slidesToSlide: 1, // optional, default to 1.
     },
-    tablet: {
-      breakpoint: { max: 1024, min: 600 },
+    medium: {
+      breakpoint: { max: 1005, min: 700 },
       items: 2,
+      slidesToSlide: 1, // optional, default to 1.
     },
-    mobile: {
-      breakpoint: { max: 600, min: 0 },
+    small: {
+      breakpoint: { max: 700, min: 0 },
       items: 1,
+      slidesToSlide: 1, // optional, default to 1.
     },
   };
 
   return (
     <>
-      <Carousel responsive={responsive} removeArrowOnDeviceType={["mobile"]}>
-        {departments.map((department, index) => (
-          <div
-            key={index}
-            className="container mx-auto h-72 w-[70%] flex justify-center items-center rounded-2xl relative "
-          >
-            <img
-              src={department.image}
-              alt={department.name}
-              className="absolute top-0 left-0 h-full w-full z-10 rounded-2xl "
-            />
-            <div className="z-20 bg-white dark:bg-slate-900 w-[80%] h-[20%] rounded-3xl flex justify-center items-center absolute bottom-8">
-              <div className="text-2xl font-semibold uppercase dark:text-[#FFCE00] opacity-80">
-                {department.name}
+      <div className="container departments">
+        <h2>Departments</h2>
+        <Carousel
+          responsive={responsive}
+          removeArrowOnDeviceType={[
+            // "superLargeDesktop",
+            // "desktop",
+            "tablet",
+            "mobile",
+          ]}
+        >
+          {departmentsArray.map((depart, index) => {
+            return (
+              <div key={index} className="card">
+                <div className="depart-name">{depart.name}</div>
+                <img src={depart.imageUrl} alt="Department" />
               </div>
-            </div>
-          </div>
-        ))}
-      </Carousel>
+            );
+          })}
+        </Carousel>
+      </div>
     </>
   );
 };

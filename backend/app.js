@@ -18,8 +18,15 @@ config({ path: ".env" });
 /* Configuring the cross platform between frontend and backend */
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    // // origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+    // origin: "http://localhost:5173/",
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    // allowedHeaders: 'Content-Type,Authorization',
+    // credentials: true,
+
+    origin: "http://localhost:5173", // Match the exact origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
     credentials: true,
   })
 );

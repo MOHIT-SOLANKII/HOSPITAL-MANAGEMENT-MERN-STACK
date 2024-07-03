@@ -16,7 +16,6 @@ const messageSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
     validate: {
       validator: function (v) {
         const regex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
@@ -30,7 +29,6 @@ const messageSchema = new mongoose.Schema({
     required: true,
     minLength: [10, "Phone number must be 10 characters long"],
     maxLength: [10, "Phone number must be 10 characters long"],
-    unique: true,
   },
   message: {
     type: String,

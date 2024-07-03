@@ -1,11 +1,22 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
 
-const Hero = () => {
+
+const Hero = ({ title, imageUrl }) => {
   return (
     <>
-    <h1 className="text-center text-3xl font-bold text-blue-500">MsCARE</h1>
-      
+      <div className="hero container">
+        <div className="banner">
+          <h1>{title}</h1>
+          <p>
+          At MSCARE, we are committed to providing state-of-the-art healthcare services with compassion and expertise. Our team of skilled professionals is dedicated to delivering personalized care tailored to your unique needs. Your well-being is our top priority, and it is our mission to ensure you experience a harmonious journey towards optimal health and wellness. With cutting-edge facilities and a patient-centered approach, MSCARE Medical Institute is here to support you every step of the way.
+          </p>
+        </div>
+        <div className="banner">
+          <img src={imageUrl} alt="hero" className="animated-image" />
+          <span>
+            <img src="/Vector.png" alt="vector" />
+          </span>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,26 +1,21 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import Hero from "../components/Hero";
 import Biography from "../components/Biography";
-import Departments from "../components/Departments";
 import MessageForm from "../components/MessageForm";
-import Navbar from "../components/Navbar";
-import InfiniteScroll from "../components/InfiniteScroll";
-import DoctorsList from "../components/DoctorsList";
-
+import Departments from "../components/Departments";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
-      {/* <MessageForm /> */}
-      <DoctorsList />
-      {/* <Departments /> */}
-      
-      {/* <Hero />
-       <Biography />
+      <Hero
+        title={
+          "Welcome to MSCARE Medical Institute"
+        }
+        imageUrl={"/injection.jpg"}
+      />
+      <Biography imageUrl={"/about.png"} />
       <Departments />
-      <MessageForm /> */}
+      <MessageForm />
     </>
   );
 };
