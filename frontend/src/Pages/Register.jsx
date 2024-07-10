@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../main";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ const Register = () => {
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   const navigateTo = useNavigate();
 
@@ -23,8 +24,8 @@ const Register = () => {
     try {
       await axios
         .post(
-          "https://hospital-backend-603p.onrender.com/api/v1/user/patient/register",
-          { firstName, lastName, email, phone, nic, dob, gender, password },
+          "http://localhost:4000/api/v1/user/patient/register",
+          { firstName, lastName, email, phone, nic, dob, gender, password,role },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
@@ -42,6 +43,7 @@ const Register = () => {
           setDob("");
           setGender("");
           setPassword("");
+          setRole("");
         });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -117,6 +119,20 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
+          <div>
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="">Select Role</option>
+              <option value="Patient">Patient</option>
+              
+            </select>
+            <input
+              disabled
+              placeholder="Leave this"
+              
+            />
+          </div>
+
           <div
             style={{
               gap: "10px",
