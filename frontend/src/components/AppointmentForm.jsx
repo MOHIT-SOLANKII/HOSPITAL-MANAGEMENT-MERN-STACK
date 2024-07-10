@@ -34,7 +34,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       const { data } = await axios.get(
-        "https://hospital-backend-603p.onrender.com/api/v1/user/doctors",
+        "https://mscare-backend.onrender.com/api/v1/user/doctors",
         { withCredentials: true }
       );
       setDoctors(data.doctors);
@@ -47,7 +47,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "https://hospital-backend-603p.onrender.com/api/v1/appointment/post",
+        "https://mscare-backend.onrender.com/api/v1/appointment/post",
         {
           firstName,
           lastName,

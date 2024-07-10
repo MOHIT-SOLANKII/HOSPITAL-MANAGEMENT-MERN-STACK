@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await axios
-      .get("https://hospital-backend-603p.onrender.com/api/v1/user/patient/logout", {
+      .get("https://mscare-backend.onrender.com/api/v1/user/patient/logout", {
         withCredentials: true,
       })
       .then((res) => {

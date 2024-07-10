@@ -26,7 +26,7 @@ app.use(
     // allowedHeaders: 'Content-Type,Authorization',
     // credentials: true,
 
-    origin: `${BASE_URL}`, // Match the exact origin
+    origin: "http://localhost:5173", // Match the exact origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,
