@@ -11,7 +11,7 @@ const Home = () => {
         title={
           "Welcome to MSCARE Medical Institute"
         }
-        imageUrl={"/injection.jpg"}
+        imageUrl={"/injection1.jpg"}
       />
       <Biography imageUrl={"/about.png"} />
       <Departments />
