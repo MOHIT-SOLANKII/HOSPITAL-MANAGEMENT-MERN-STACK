@@ -9,7 +9,7 @@ import userRouter from "./router/userRouter.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import appointmentRouter from "./router/appointmentRouter.js";
 
-const BASE_URL = process.env.BASE_URL;
+const baseUrl = process.env.BASE_URL;
 
 /* Giving functionalities of express to the app variable */
 const app = express();
@@ -26,7 +26,7 @@ app.use(
     // allowedHeaders: 'Content-Type,Authorization',
     // credentials: true,
 
-    origin: "http://localhost:5173", // Match the exact origin
+    origin: `${baseUrl}`, // Match the exact origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,
